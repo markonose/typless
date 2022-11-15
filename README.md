@@ -25,7 +25,7 @@ ko ustvarimo notification, moramo restartati minio, to lahko naredimo preko prom
 Nato je potrebno ustvariti bucket in v bucket managementu subscribat na event, kjes se v ARN dropdownu zbere minio sqs in izberemo event type put.
 
 ## Skica
-![Alt text](./skica.jpg)
+![Alt text](./skica.png)
 
 ## Shema
 Uporabil sem mongodb, shema je:
