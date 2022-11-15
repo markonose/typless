@@ -22,7 +22,9 @@ Durable: ON
 ```
 
 ko ustvarimo notification, moramo restartati minio, to lahko naredimo preko prompta, ki se pojavi na konzoli.
-Nato je potrebno ustvariti bucket in v bucket managementu subscribat na event, kjes se v ARN dropdownu zbere minio sqs in izberemo event type put.
+Nato je potrebno ustvariti bucket in v bucket managementu subscribat na event, kjes se v ARN dropdownu zbere minio sqs in izberemo event type put. Pa nastaviti policy na public.
+
+Notifier service samo logira queue message v konzolo, ideja je da bi namest logiranja poslal podatke na webhook, ali pa da se externi sistem poveze na nas message queue
 
 ## Skica
 ![Alt text](./skica.png)
