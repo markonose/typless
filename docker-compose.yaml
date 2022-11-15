@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  api:
+    build: ./api
+    image: typless-api
+    networks:
+      - typeless-d54saf25sd4f
+    ports:
+      - 5000:5000
+    depends_on:
+      - "rabbitmq"
+  minio:
+    image: quay.io/minio/minio
+    command: server /data --console-address ":9090"
+    environment:
+      - MINIO_ROOT_USER=ROOTUSER
+      - MINIO_ROOT_PASSWORD=CHANGEME123
+    networks:
+      - typeless-d54saf25sd4f
+    ports:
+      - 9000:9000
+      - 9090:9090
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+    networks:
+      - typeless-d54saf25sd4f
+    ports:
+      - 27017:27017
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - 15672:15672
+      - 5672:5672
+    networks:
+      - typeless-d54saf25sd4f
+networks:
+  typeless-d54saf25sd4f:
+   name: typeless-d54saf25sd4f
